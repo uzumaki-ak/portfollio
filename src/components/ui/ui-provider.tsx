@@ -4,7 +4,6 @@ import {
   ChakraProvider,
   createSystem,
   defaultConfig,
-  defaultSystem,
   defineTextStyles,
 } from "@chakra-ui/react";
 import { Saira as BodyFont, DM_Sans as HeadingFont } from "next/font/google";

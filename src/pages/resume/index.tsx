@@ -26,9 +26,7 @@ export default function ResumePage() {
             px={4}
             py={0}
             fontSize={"sm"}
-            _hover={{
-              textDecoration: "none",
-            }}
+            _hover={{ textDecoration: "none" }}
             color={"cornsilk"}
           >
             Download Resume
@@ -36,7 +34,7 @@ export default function ResumePage() {
         </Flex>
         <Stack id="Experience" gap={8}>
           <Heading as="h2" fontSize="2xl" color={"cornsilk"}>
-            Expertise & Role's ↴
+            Expertise & Role&apos;s ↴
           </Heading>
           {experienceData.map((item) => (
             <Experience key={item.company} {...item} />
@@ -82,12 +80,7 @@ const Experience = ({
 }: Experience) => {
   return (
     <Stack gap={4}>
-      <Flex
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        flexWrap={"wrap"}
-        gap={2}
-      >
+      <Flex justifyContent={"space-between"} alignItems={"center"} flexWrap={"wrap"} gap={2}>
         <Text textStyle={"cardHeading"} color={"white"}>
           {company} | {title}
         </Text>
@@ -98,9 +91,7 @@ const Experience = ({
       <Separator opacity={0.2} />
       <Stack as={"ul"} listStyleType={"disc"} ml={5}>
         {deliverables.map((item) => (
-          <Text as="li" key={item}>
-            {item}
-          </Text>
+          <Text as="li" key={item}>{item}</Text>
         ))}
       </Stack>
     </Stack>
@@ -112,24 +103,24 @@ const experienceData: Experience[] = [
     company: "BizByte",
     title: "Front-End Dev",
     fromDate: "2025-02-20",
-    toDate: "devloping",
+    toDate: "developing",
     deliverables: [
-      " Built and maintained a dynamic betting platform using Next.js, TypeScript, and ShadCN for a seamless user experience.",
-      "  Enhanced UI performance, reducing load times by 25% through optimization techniques and efficient rendering strategies.",
-      "  Worked closely with QA and backend teams to ensure smooth deployments and bug-free releases.",
-      " Authored detailed API documentation, improving developer onboarding and integration efficiency.",
+      "Built and maintained a dynamic betting platform using Next.js, TypeScript, and ShadCN for a seamless user experience.",
+      "Enhanced UI performance, reducing load times by 25% through optimization techniques and efficient rendering strategies.",
+      "Worked closely with QA and backend teams to ensure smooth deployments and bug-free releases.",
+      "Authored detailed API documentation, improving developer onboarding and integration efficiency.",
     ],
   },
   {
     company: "Atoms",
     title: "FullStack Dev",
     fromDate: "2025-01-01",
-    toDate: "devloping",
+    toDate: "developing",
     deliverables: [
-      "Built and optimized full-stack applications using Next.js, React, TypeScript, ShadCN, Chakra UI, and Tailwind CSS",
-      "Developed robust backends with Node.js, Express, and PostgreSQL/MongoDB, leveraging Neon and Supabase for efficient database management",
-      "Implemented authentication and security measures using JWT, Firebase, and NextAuth, ensuring compliance with industry standards",
-      "Worked on multiple projects, including FinGenie (a financial management platform built with Next.js) and ThinkTank (a blog site developed using the MERN stack)",
+      "Built and optimized full-stack applications using Next.js, React, TypeScript, ShadCN, Chakra UI, and Tailwind CSS.",
+      "Developed robust backends with Node.js, Express, and PostgreSQL/MongoDB, leveraging Neon and Supabase for efficient database management.",
+      "Implemented authentication and security measures using JWT, Firebase, and NextAuth, ensuring compliance with industry standards.",
+      "Worked on multiple projects, including FinGenie (a financial management platform built with Next.js) and ThinkTank (a blog site developed using the MERN stack).",
     ],
   },
 ];
@@ -145,18 +136,9 @@ type Education = {
 const Education = ({ cgpa, degree, fromDate, location, toDate }: Education) => {
   return (
     <Stack gap={4}>
-      <Flex
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        flexWrap={"wrap"}
-        gap={2}
-      >
-        <Text textStyle={"cardHeading"} color={"white"}>
-          {degree}
-        </Text>
-        <Text fontSize={"sm"}>
-          {fromDate} - {toDate}
-        </Text>
+      <Flex justifyContent={"space-between"} alignItems={"center"} flexWrap={"wrap"} gap={2}>
+        <Text textStyle={"cardHeading"} color={"white"}>{degree}</Text>
+        <Text fontSize={"sm"}>{fromDate} - {toDate}</Text>
       </Flex>
       <Separator opacity={0.2} />
       <Stack as={"ul"} listStyleType={"disc"} ml={5}>
@@ -169,7 +151,7 @@ const Education = ({ cgpa, degree, fromDate, location, toDate }: Education) => {
 
 export const educationData: Education[] = [
   {
-    degree: "B-Tech(CSE)",
+    degree: "B-Tech (CSE)",
     cgpa: "Studying",
     fromDate: "Aug 2023",
     toDate: "Sept 2027",
@@ -194,26 +176,26 @@ const Award = ({ title, date, url }: Award) => {
   return (
     <Stack>
       <Text textStyle={"cardHeading"}>{title}</Text>
-      {/* <Text fontSize={"sm"}>
-        {date} | <CNLink href={url}>View Certificate</CNLink>
-      </Text> */}
+      <Text fontSize={"sm"}>
+        {date} | <CNLink href={url} target="_blank">View Certificate</CNLink>
+      </Text>
     </Stack>
   );
 };
 
 export const awardData: Award[] = [
   {
-    title: "T-Rex Hackthon: 5th Rank",
+    title: "T-Rex Hackathon: 5th Rank",
     date: "2024",
     url: "#",
   },
   {
-    title: "Code Cubicles-Hackthon: Top-!0",
+    title: "Code Cubicles-Hackathon: Top-10",
     date: "2024",
     url: "#",
   },
   {
-    title: "Clash of Codes-Hackthon: 6th Rank",
+    title: "Clash of Codes-Hackathon: 6th Rank",
     date: "2020",
     url: "#",
   },

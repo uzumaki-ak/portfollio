@@ -9,7 +9,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { FaGithub, FaGithubAlt, FaLink } from "react-icons/fa6";
+import {  FaGithubAlt } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 
 export default function ProjectPage() {

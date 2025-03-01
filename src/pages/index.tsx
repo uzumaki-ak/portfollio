@@ -3,26 +3,6 @@ import { Box, Heading, Separator, Stack, Text } from "@chakra-ui/react";
 import { CiMail } from "react-icons/ci";
 import { GoArrowUpRight } from "react-icons/go";
 
-export default function Home() {
-  return (
-    <Stack gap={8} separator={<Separator opacity={0.2} />}>
-      <Stack>
-        <Heading as="h1">Yo there, I'm Anikesh Kumar</Heading>
-        <Text>
-          I'm a full-stack developer from Delhi, India, i Like building dynamic,
-          user-friendly web experiences with a touch of design refinement.
-        </Text>
-      </Stack>
-      {chunks.map((item) => (
-        <Stack key={item.title}>
-          <Heading as="h2">{item.title}</Heading>
-          <Box>{item.content}</Box>
-        </Stack>
-      ))}
-    </Stack>
-  );
-}
-
 export const chunks = [
   {
     title: "Professional Work",
@@ -46,9 +26,9 @@ export const chunks = [
     content: (
       <Text>
         I have experience guiding teams in dynamic environments, ensuring
-        meaningful outcomes. I've also led workshops to enhance technical and
-        organizational skills and contributed to community events that foster
-        collaboration.
+        meaningful outcomes. I&apos;ve also led workshops to enhance technical
+        and organizational skills and contributed to community events that
+        foster collaboration.
       </Text>
     ),
   },
@@ -57,8 +37,8 @@ export const chunks = [
     content: (
       <Text>
         Outside of work, I love delving into technology, personal growth, and
-        creative pursuits like music and writing. I'm always eager to learn new
-        skills and broaden my horizons.
+        creative pursuits like music and writing. I&apos;m always eager to
+        learn new skills and broaden my horizons.
       </Text>
     ),
   },
@@ -67,9 +47,9 @@ export const chunks = [
     content: (
       <Stack gap={3}>
         <Text>
-          I’ve begun sharing my expertise through blogs and articles, aiming to
-          help others enhance their skills and stay ahead of industry trends.
-          Stay tuned for more insights!
+          I&apos;ve begun sharing my expertise through blogs and articles,
+          aiming to help others enhance their skills and stay ahead of industry
+          trends. Stay tuned for more insights!
         </Text>
         <CNLink
           width={"fit-content"}
@@ -95,3 +75,24 @@ export const chunks = [
     ),
   },
 ];
+
+export default function Home() {
+  return (
+    <Stack gap={8} separator={<Separator opacity={0.2} />}>
+      <Stack>
+        <Heading as="h1">Yo there, I&apos;m Anikesh Kumar</Heading>
+        <Text>
+          I&apos;m a full-stack developer from Delhi, India. I like building
+          dynamic, user-friendly web experiences with a touch of design
+          refinement.
+        </Text>
+      </Stack>
+      {chunks.map((item) => (
+        <Stack key={item.title}>
+          <Heading as="h2">{item.title}</Heading>
+          <Box>{item.content}</Box>
+        </Stack>
+      ))}
+    </Stack>
+  );
+}

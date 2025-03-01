@@ -8,7 +8,7 @@ import { TfiInstagram } from "react-icons/tfi";
 import { CNLink } from "./chakra-next";
 
 export default function Footer() {
-  // *def socila med icon
+  // *def social media icons
   const items: {
     Icon: IconType;
     href: string;
@@ -21,23 +21,23 @@ export default function Footer() {
     },
     {
       Icon: FiLinkedin,
-      href: " https://www.linkedin.com/in/anikesh-kumar-1b87b42a5",
-      title: "Linkedin",
+      href: "https://www.linkedin.com/in/anikesh-kumar-1b87b42a5",
+      title: "LinkedIn",
     },
     {
       Icon: FiGithub,
-      href: " https://github.com/uzumaki-ak",
-      title: "Github",
+      href: "https://github.com/uzumaki-ak",
+      title: "GitHub",
     },
     {
       Icon: TfiInstagram,
       href: "https://www.instagram.com/anikesshh",
-      title: "Insta",
+      title: "Instagram",
     },
     {
       Icon: RiTwitterFill,
       href: "https://x.com/UzumakiAk77285",
-      title: "X",
+      title: "X (Twitter)",
     },
   ];
 
@@ -50,21 +50,19 @@ export default function Footer() {
         lg: 12,
       }}
     >
-      {items.map((item) => {
-        return (
-          <Button
-            as="div"
-            key={item.title}
-            variant={"surface"}
-            p={2}
-            _hover={{ bg: "#38ED18" }}
-          >
-            <CNLink href={item.href}>
-              <item.Icon />
-            </CNLink>
-          </Button>
-        );
-      })}
+      {items.map((item) => (
+        <Button
+          as="div"
+          key={item.title}
+          variant={"surface"}
+          p={2}
+          _hover={{ bg: "#38ED18" }}
+        >
+          <CNLink href={item.href.trim()}>
+            <item.Icon />
+          </CNLink>
+        </Button>
+      ))}
     </Center>
   );
 }
