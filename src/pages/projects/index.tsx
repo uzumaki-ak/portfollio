@@ -9,15 +9,16 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import {  FaGithubAlt } from "react-icons/fa6";
+import { FaGithubAlt } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 
 export default function ProjectPage() {
   return (
     <Stack gap={8}>
       <Heading as="h1" fontSize="3xl" mb={4} color={"antiquewhite"}>
-        Build's ⇲
+        Build&apos;s ⇲
       </Heading>
+
       {projectData.map((i) => (
         <Project key={i.title} {...i} />
       ))}
