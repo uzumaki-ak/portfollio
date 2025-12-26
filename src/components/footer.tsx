@@ -31,7 +31,7 @@ export default function Footer() {
     },
     {
       Icon: TfiInstagram,
-      href: "https://www.instagram.com/anikesshh",
+      href: "https://www.instagram.com/anikeshiro",
       title: "Instagram",
     },
     {

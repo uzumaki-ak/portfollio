@@ -65,11 +65,11 @@ export const chunks = [
           width={"fit-content"}
           _focus={{ outline: "none", boxShadow: "none" }}
           display={"flex"}
-          href="mailto:placeholder@example.com"
+          href="mailto:anikeshuzumaki@gmail.com"
           target="_blank"
         >
           <CiMail />
-          placeholder@example.com
+          anikeshuzumaki@gmail.com
         </CNLink>
       </Stack>
     ),

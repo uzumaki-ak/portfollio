@@ -20,10 +20,10 @@ export default function Navbar() {
       title: "projects",
       href: navItems.projects,
     },
-    {
-      title: "blog",
-      href: navItems.blog,
-    },
+    // {
+    //   title: "blog",
+    //   href: navItems.blog,
+    // },
     {
       title: "contact",
       href: navItems.contact,

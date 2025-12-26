@@ -32,7 +32,7 @@ export default function ContactPage() {
             target="_blank"
             color={"wheat"}
           >
-            <RiMailSendFill />
+           <RiMailSendFill style={{ color: 'currentColor' }} />
             anikeshuzumaki@gmail.com
           </CNLink>
         </Stack>
