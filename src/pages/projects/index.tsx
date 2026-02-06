@@ -46,8 +46,16 @@ import {
   SiObsstudio,
   SiYoutube,
   SiLinkedin,
+  SiKotlin,
+  SiAndroid,
+  SiJetpackcompose,
+  SiGoogle,
+  SiHiveBlockchain,
+  SiSolidity,
+  SiRemix,
 } from "react-icons/si";
 import { FaChrome } from "react-icons/fa";
+import { RiJavaLine } from "react-icons/ri";
 
 export default function ProjectPage() {
   const [visibleProjects, setVisibleProjects] = useState(8);
@@ -261,6 +269,24 @@ const Project = ({
                     <SiJavascript {...iconProps} /> JavaScript
                   </Badge>
                 );
+              if (tech === "Blockchain")
+                return (
+                  <Badge key={tech} colorScheme="yellow">
+                    <SiHiveBlockchain {...iconProps} /> Blockchain
+                  </Badge>
+                );
+              if (tech === "Solidity")
+                return (
+                  <Badge key={tech} colorScheme="yellow">
+                    <SiSolidity {...iconProps} /> Solidity
+                  </Badge>
+                );
+              if (tech === "Remix")
+                return (
+                  <Badge key={tech} colorScheme="yellow">
+                    <SiRemix {...iconProps} /> Remix
+                  </Badge>
+                );
               if (tech === "TypeScript")
                 return (
                   <Badge key={tech} colorScheme="blue">
@@ -339,6 +365,30 @@ const Project = ({
                     <SiSupabase {...iconProps} /> Supabase
                   </Badge>
                 );
+              if (tech === "Kotlin")
+                return (
+                  <Badge key={tech} colorScheme="green">
+                    <SiKotlin {...iconProps} /> Kotlin
+                  </Badge>
+                );
+              if (tech === "Android")
+                return (
+                  <Badge key={tech} colorScheme="orange">
+                    <SiAndroid {...iconProps} /> Android
+                  </Badge>
+                );
+              if (tech === "Jetpack Compose")
+                return (
+                  <Badge key={tech} colorScheme="green">
+                    <SiJetpackcompose {...iconProps} /> Jetpack Compose
+                  </Badge>
+                );
+              if (tech === "Java")
+                return (
+                  <Badge key={tech} colorScheme="green">
+                    <RiJavaLine {...iconProps} /> Java
+                  </Badge>
+                );
               if (tech === "Expo")
                 return (
                   <Badge key={tech} colorScheme="gray">
@@ -391,6 +441,12 @@ const Project = ({
                 return (
                   <Badge key={tech} colorScheme="purple">
                     <SiObsstudio {...iconProps} /> OBS Studio
+                  </Badge>
+                );
+              if (tech === "Google")
+                return (
+                  <Badge key={tech} colorScheme="purple">
+                    <SiGoogle {...iconProps} /> Google
                   </Badge>
                 );
               if (tech === "YouTube API")
@@ -623,6 +679,7 @@ const projectData = [
       "A web application to generate professional README files with AI assistance, featuring templates, customization, and real-time preview. Includes multiple AI model support, project structure visualization, and chat-based assistance for comprehensive documentation creation.",
     previewUrl: "https://readme-creator-mini-coderabbit-cel8.vercel.app/",
     gitUrl: "https://github.com/uzumaki-ak/readme-creator-mini-coderabbit",
+    demoUrl: "https://youtu.be/mqxlrZfmMns",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "AI", "Supabase"],
     label: "Documentation Generator",
     category: "AI & Automation",
@@ -632,6 +689,7 @@ const projectData = [
     description:
       "An event management platform for creating events, sending invites, and tracking attendee responses with an admin dashboard for organizers. Features guest management, attendance tracking, event details management, and invitation link sharing for comprehensive event coordination.",
     previewUrl: "https://rsvpify.vercel.app/",
+    demoUrl: "https://youtu.be/CQheZDy8PII",
     gitUrl: "https://github.com/uzumaki-ak/rsvp",
     stack: ["Next.js", "React", "JavaScript", "Node.js", "Express"],
     label: "Event Management System",
@@ -642,6 +700,7 @@ const projectData = [
     description:
       "A Chrome extension for WhatsApp Web that uses AI to summarize chat conversations, extracting key points and generating concise overviews. Features automatic message extraction, AI-powered summarization with Gemini, secure API key storage, and popup interface for configuration.",
     previewUrl: "https://github.com/uzumaki-ak/WA-web-chat-summarizer-ext",
+    demoUrl: "https://youtu.be/co4GStCRRYw",
     gitUrl: "https://github.com/uzumaki-ak/WA-web-chat-summarizer-ext",
     stack: [
       "TypeScript",
@@ -657,10 +716,136 @@ const projectData = [
     title: "Team Management Auth",
     description:
       "A role-based authentication system for team management with user roles, team assignments, and secure access control using JWT and Prisma. Supports multiple roles, team membership management, user filtering, and secure authentication workflows for organizational access control.",
-    previewUrl: "https://github.com/uzumaki-ak/team-mang-role-based-auth",
     gitUrl: "https://github.com/uzumaki-ak/team-mang-role-based-auth",
     stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "JWT"],
     label: "Authentication System",
     category: "Web App",
   },
+  {
+    title: "VoiceRecorder-AI",
+    description: "VoiceRecorder-App-AI is a professional Android voice recording application designed to provide users with high-quality audio recording, organization, and management features.",
+    gitUrl: "https://github.com/uzumaki-ak/VoiceRecorder-App-AI",
+    stack: ["Kotlin", "Jetpack Compose", "Android"],
+    label: "Voice Recorder App",
+    category: "Mobile App",
+  },
+  {
+    title: "AskMyRepo",
+    description: "AskMyRepo is a professional, full-stack web application designed to enable seamless interaction with your GitHub repositories. It combines AI capabilities with source code understanding, allowing users to ask questions about their codebase and receive accurate, context-aware answers. The platform integrates GPT-based AI models, embedding similarity search, and a user-friendly interface to facilitate efficient code exploration, documentation, and project management",
+    gitUrl: "https://github.com/uzumaki-ak/ask-my-repo",
+    previewUrl: "https://askmyrepo.onrender.com/",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Gemini", "Supabase"],
+    label: "AI Chat App",
+    category: "Web App",
+  },
+  {
+    title: "Instagram,Youtube,Facebook,Twitter video downloader",
+    description: "MediaDLBackend is a highly reliable, multi-platform video and audio downloading backend API built with FastAPI. Designed for robustness and versatility, it supports multiple popular content platforms including YouTube, Instagram, Reddit, Twitter/X, TikTok, Facebook, and Vimeo. Its core strength lies in a 3-layer fallback system that ensures download success even when primary methods encounter issues—leveraging yt-dlp as the primary downloader, with secondary support from instagrapi for Instagram, and a tertiary fallback using requests and regex parsing.",
+    gitUrl: "https://github.com/uzumaki-ak/MediaDLBackend",
+    previewUrl: "https://mediadlbackend.onrender.com/",
+    stack: ["FastAPI", "Python", "yt-dlp", "instagrapi", "requests", "regex"],
+    label: "Video Downloader API",
+    category: "Web App",
+  },
+  {
+    title: "Instagram,Youtube,Facebook,Twitter video downloader",
+    description: "MediaDlApp is a professional, full-stack mobile application designed to enable seamless downloading of videos and audio from multiple social media platforms. It combines AI capabilities with source code understanding, allowing users to ask questions about their codebase and receive accurate, context-aware answers. The platform integrates GPT-based AI models, embedding similarity search, and a user-friendly interface to facilitate efficient code exploration, documentation, and project management",
+    gitUrl: "https://github.com/uzumaki-ak/MediaDlApp",
+    stack: ["Kotlin", "Android", "Jetpack Compose"],
+    label: "Video Downloader App",
+    category: "Mobile App",
+  },
+  {
+    title: "Lecture Docs",
+    description: "Transform your handwritten lecture notes, PDFs, audio, and code into beautiful, kid-friendly documentation with AI-powered insights and per-project chatbots",
+    gitUrl: "https://github.com/uzumaki-ak/lecture-docs",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Gemini", "Supabase", "Python", "FastAPI", "LangChain", "ChromaDB", "Docker", "Redis"],
+    label: "AI Chat App",
+    demoUrl: "https://youtu.be/_Iyqe4NJIao",
+    category: "Web App",
+  },
+  {
+    title: "LumaFont",
+    description: "LumaFront is a sophisticated Android application designed to provide real-time face tracking and overlay lighting effects system-wide. Built with modern Android architecture and leveraging on-device machine learning, it detects faces via Google ML Kit and displays a dynamic, studio-style glow overlay that follows the user's face. The app also monitors front camera usage across the device, intelligently activating overlays only when the front camera is in use, creating an immersive lighting experience akin to Apple's MacBook Edge Light.",
+    gitUrl: "https://github.com/uzumaki-ak/LumaFront",
+    demoUrl: "https://youtu.be/nrljg4TrCF0",
+    stack: ["Kotlin", "Android", "Jetpack Compose", "ML Kit"],
+    label: "Android App",
+    category: "Mobile App",
+  },
+  {
+    title: "ChargeLock",
+    description: "Unplug Guard is an always-on Android security app that protects your phone from physical theft and tampering in public spaces. It instantly triggers a loud, unstoppable alarm when your device is unplugged from power or disconnected from trusted accessories — and can only be dismissed by the real device owner using biometric or system credentials.",
+    gitUrl: "https://github.com/uzumaki-ak/ChargeLock",
+    stack: ["Kotlin", "Android", "Jetpack Compose"],
+    label: "Android App",
+    category: "Mobile App",
+  },
+  {
+    title: "Self Destruct Chat App",
+    description: "Self Destruct Chat is a professional, full-stack web application designed to enable seamless, secure, and ephemeral messaging between users. It combines real-time chat capabilities with advanced self-destructing message functionality, allowing users to send messages that automatically disappear after a specified time interval. The platform integrates a user-friendly interface with robust backend architecture to facilitate secure, private, and temporary conversations.",
+    gitUrl: "https://github.com/uzumaki-ak/self-destruct-chat-app",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Upstash", "Elysia.js"],
+    label: "Chat App",
+    category: "Web App",
+  },
+  {
+    title: "MeetPing",
+    description: "MeetPing is a sophisticated Android application designed to facilitate seamless, intelligent meeting management and note-taking. Leveraging advanced speech recognition, hierarchical summarization, and integrated large language models (LLMs), MeetPing captures live meeting transcripts, condenses discussions into meaningful summaries",
+    gitUrl: "https://github.com/uzumaki-ak/MeetPing",
+    demoUrl: "https://youtu.be/BGLMY-3C9lM",
+    stack: ["Kotlin", "Android", "Jetpack Compose", "ML Kit"],
+    label: "Android App",
+    category: "Mobile App",
+  },
+  {
+    title: "NotifIQ",
+    description: "NotifIQ is a professional, full-stack Android application designed to enable seamless, intelligent notification management and analysis. Leveraging advanced notification tracking, hierarchical summarization, and integrated large language models (LLMs), NotifIQ captures live notification data, condenses discussions into meaningful summaries",
+    gitUrl: "https://github.com/uzumaki-ak/NotifIQ",
+    stack: ["Kotlin", "Android", "Jetpack Compose", "ML Kit"],
+    label: "Android App",
+    category: "Mobile App",
+  },
+  {
+    title: "WAMR-APP-Clone",
+    description: "WAMR-APP-Clone is a sophisticated Android-based messaging recovery application that allows users to browse, organize, and analyze recovered chat messages and media files from WhatsApp and similar messaging platforms. Built with a focus on privacy and data visualization, the app provides features such as chat management, media viewing, status downloads, and notification monitoring, all while maintaining a user-friendly interface.",
+    gitUrl: "https://github.com/uzumaki-ak/WAMR-APP-Clone",
+    stack: ["Kotlin", "Android", "Jetpack Compose"],
+    label: "Android App",
+    category: "Mobile App",
+  },
+  {
+    title: "App Locker",
+    description: "App Locker is a professional, full-stack Android application designed to enable seamless, intelligent app locking and security. Leveraging advanced app locking, hierarchical summarization, and integrated large language models (LLMs), App Locker captures live app usage data, condenses discussions into meaningful summaries",
+    gitUrl: "https://github.com/uzumaki-ak/App-Locker-pin-patttern-biometric",
+    demoUrl: "https://youtu.be/DiJNnu_a0s4",
+    stack: ["Kotlin", "Android", "Jetpack Compose"],
+    label: "Android App",
+    category: "Mobile App",
+  },
+  {
+    title: "Android-Floating-Volume-Buttons",
+    description: "Android-Floating-Volume-Buttons is a professional-grade Android application designed to enhance user control over device volume and screen management through a persistent floating overlay. The app provides custom floating buttons that allow users to adjust volume, mute/unmute, and lock the device screen directly from an overlay window that appears above all other apps. The overlay is draggable, customizable, and runs as a foreground service to ensure stability and persistence even when the app is not actively in use.",
+    gitUrl: "https://github.com/uzumaki-ak/Android-Floating-Volume-Buttons",
+    demoUrl: "https://youtu.be/Phi531TxvgQ",
+    stack: ["Kotlin", "Android", "Jetpack Compose"],
+    label: "Android App",
+    category: "Mobile App",
+  },
+  {
+    title: "Blockchain Basics",
+    description: "Completed core blockchain fundamentals covering decentralized ledger architecture, cryptographic linking, smart contracts (Ethereum vs Bitcoin), gas and transaction economics (including EIP-1559), consensus evolution from PoW to PoS, and hard-fork governance with real-world case studies like ETH vs ETC.",
+    gitUrl: "https://github.com/uzumaki-ak/blockchain",
+    stack: ["Solidity", "Hardhat", "Ethers.js", "Truffle", "Ganache", "Remix", "Blockchain"],
+    label: "Blockchain",
+    category: "Blockchain",
+  },
+  {
+    title: "Solidity-Projects",
+    description: "Solidity Basics",
+    gitUrl: "https://github.com/uzumaki-ak/Solidity",
+    stack: ["Solidity", "Remix", "Blockchain"],
+    label: "Blockchain",
+    category: "Blockchain",
+  }
 ];
