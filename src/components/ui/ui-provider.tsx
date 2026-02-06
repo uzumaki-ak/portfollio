@@ -1,11 +1,10 @@
-"use client";
-
 import {
   ChakraProvider,
   createSystem,
   defaultConfig,
   defineTextStyles,
 } from "@chakra-ui/react";
+import { ThemeProvider } from "next-themes";
 import { Saira as BodyFont, DM_Sans as HeadingFont } from "next/font/google";
 
 export const bodyFont = BodyFont({
@@ -24,10 +23,12 @@ export const headingFont = HeadingFont({
 
 const styleSystum = createSystem(defaultConfig, {
   globalCss: {
+    ":root": {
+      "--accent-color": "#ED8936", // Default darkorange
+    },
     "html, body": {
-      bg: "blackAlpha.800",
-      color: "whiteAlpha.500",
-
+      bg: "blackAlpha.900", // Slightly darker for better contrast
+      color: "whiteAlpha.800",
       lineHeight: 1.5,
       scrollBehavior: "smooth",
     },
@@ -44,11 +45,12 @@ const styleSystum = createSystem(defaultConfig, {
     },
     // thumb
     "::-webkit-scrollbar-thumb": {
-      bg: "gray.700",
+      bg: "var(--accent-color)", // Dynamic accent color
       borderRadius: "10px",
     },
     "::-webkit-scrollbar-thumb:hover": {
-      bg: "darkorange",
+      bg: "var(--accent-color)",
+      filter: "brightness(1.1)",
     },
   },
   theme: {
@@ -59,6 +61,11 @@ const styleSystum = createSystem(defaultConfig, {
         },
         body: {
           value: bodyFont.style.fontFamily,
+        },
+      },
+      colors: {
+        accent: {
+          value: "var(--accent-color)",
         },
       },
     },
@@ -79,5 +86,11 @@ type props = {
 };
 
 export function UiProvider(props: props) {
-  return <ChakraProvider value={styleSystum}>{props.children}</ChakraProvider>;
+  return (
+    <ChakraProvider value={styleSystum}>
+      <ThemeProvider attribute="class" disableTransitionOnChange>
+        {props.children}
+      </ThemeProvider>
+    </ChakraProvider>
+  );
 }

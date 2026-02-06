@@ -3,6 +3,7 @@
 import { CNLink } from "@/components/chakra-next";
 import Metahead from "@/components/metahead";
 import { navItems } from "@/lib/config/nav-confg";
+import { useRouter } from "next/router";
 import {
   Flex,
   Heading,
@@ -58,15 +59,25 @@ import { FaChrome } from "react-icons/fa";
 import { RiJavaLine } from "react-icons/ri";
 
 export default function ProjectPage() {
+  const router = useRouter();
+  const { query, isReady } = router;
+
   const [visibleProjects, setVisibleProjects] = useState(8);
   const [loading, setLoading] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("All");
+
+  const activeCategory = typeof query.category === 'string' ? query.category : "All";
+
+  const setActiveCategory = (category: string) => {
+    router.replace({
+      pathname: router.pathname,
+      query: { ...query, category },
+    }, undefined, { scroll: false, shallow: true });
+  };
 
   const filteredProjects = projectData.filter((project) =>
     activeCategory === "All" ? true : project.category === activeCategory
   );
 
-  // Use useCallback to prevent unnecessary re-renders
   const loadMoreProjects = useCallback(() => {
     if (loading || visibleProjects >= filteredProjects.length) return;
 
@@ -90,7 +101,6 @@ export default function ProjectPage() {
       }
     };
 
-    // Add debounce to scroll handler
     let timeoutId: NodeJS.Timeout;
     const debouncedScroll = () => {
       clearTimeout(timeoutId);
@@ -111,6 +121,17 @@ export default function ProjectPage() {
 
   const displayedProjects = filteredProjects.slice(0, visibleProjects);
 
+  const categories = [
+    "All",
+    "Web App",
+    "Mobile App",
+    "AI & Automation",
+    "Extensions",
+    "Blockchain",
+  ];
+
+  if (!isReady) return null; // Prevent hydration mismatch
+
   return (
     <Stack gap={8}>
       <Metahead
@@ -124,65 +145,102 @@ export default function ProjectPage() {
         Build&apos;s ⇲
       </Heading>
 
-      <Flex gap={2} flexWrap="wrap" mb={8}>
-        {[
-          "All",
-          "Web App",
-          "Mobile App",
-          "AI & Automation",
-          "Extensions",
-          "Blockchain",
-        ].map((category) => (
-          <Button
-            key={category}
-            size="sm"
-            variant={activeCategory === category ? "solid" : "outline"}
-            colorScheme={activeCategory === category ? "pink" : "gray"}
-            onClick={() => setActiveCategory(category)}
-            borderRadius="full"
-            _hover={{
-              bg: activeCategory === category ? "pink.600" : "gray.700",
+      <Flex
+        direction={{ base: "column", lg: "row" }}
+        gap={{ base: 6, lg: 10 }}
+        alignItems="start"
+      >
+        {/* Sidebar / Topbar for filters */}
+        <Box
+          w={{ base: "100%", lg: "20%" }}
+          minW="200px"
+          position={{ base: "sticky", lg: "sticky" }}
+          top={{ base: "0", lg: "100px" }}
+          zIndex={10}
+          bg={{ base: "blackAlpha.900", lg: "transparent" }}
+          py={{ base: 4, lg: 0 }}
+          backdropFilter={{ base: "blur(10px)", lg: "none" }}
+          borderBottom={{ base: "1px solid", lg: "none" }}
+          borderColor={{ base: "whiteAlpha.200", lg: "transparent" }}
+        >
+          <Stack
+            direction={{ base: "row", lg: "column" }}
+            gap={2}
+            overflowX={{ base: "auto", lg: "unset" }}
+            pb={{ base: 2, lg: 0 }}
+            css={{
+              "::-webkit-scrollbar": { display: "none" },
+              scrollbarWidth: "none",
             }}
           >
-            {category}
-          </Button>
-        ))}
+            {categories.map((category) => (
+              <Button
+                key={category}
+                size="sm"
+                variant={activeCategory === category ? "solid" : "ghost"}
+                justifyContent="flex-start"
+                bg={activeCategory === category ? "var(--accent-color)" : "transparent"}
+                color={activeCategory === category ? "black" : "gray.400"}
+                onClick={() => setActiveCategory(category)}
+                borderRadius="md"
+                _hover={{
+                  bg: activeCategory === category ? "var(--accent-color)" : "whiteAlpha.100",
+                  color: activeCategory === category ? "black" : "white",
+                  opacity: 0.8
+                }}
+                flexShrink={0}
+              >
+                {category}
+              </Button>
+            ))}
+          </Stack>
+        </Box>
+
+        {/* Projects Grid */}
+        <Box flex={1} w="100%">
+          <Stack gap={8}>
+            {displayedProjects.length > 0 ? (
+              displayedProjects.map((i) => (
+                <Project key={i.title} {...i} />
+              ))
+            ) : (
+              <Text color="gray.500">No projects found in this category.</Text>
+            )}
+
+            {/* Loading spinner */}
+            {loading && (
+              <Center py={8}>
+                <Spinner size="lg" color="var(--accent-color)" />
+              </Center>
+            )}
+
+            {/* Load More Button */}
+            {visibleProjects < filteredProjects.length && !loading && (
+              <Center py={8}>
+                <Button
+                  variant="outline"
+                  borderColor="var(--accent-color)"
+                  color="var(--accent-color)"
+                  onClick={loadMoreProjects}
+                  _hover={{ bg: "var(--accent-color)", color: "black" }}
+                >
+                  Load More Projects ({filteredProjects.length - visibleProjects}{" "}
+                  remaining)
+                </Button>
+              </Center>
+            )}
+
+            {/* Completion message */}
+            {visibleProjects >= filteredProjects.length && filteredProjects.length > 0 && (
+              <Center py={8}>
+                <Text color="gray.400" fontSize="sm">
+                  You've seen all {filteredProjects.length} projects! 🎉
+                </Text>
+              </Center>
+            )}
+          </Stack>
+        </Box>
       </Flex>
-
-      {displayedProjects.map((i) => (
-        <Project key={i.title} {...i} />
-      ))}
-
-      {/* Loading spinner */}
-      {loading && (
-        <Center py={8}>
-          <Spinner size="lg" color="pink.300" />
-        </Center>
-      )}
-
-      {/* Load More Button */}
-      {visibleProjects < filteredProjects.length && !loading && (
-        <Center py={8}>
-          <Button
-            colorScheme="pink"
-            variant="outline"
-            onClick={loadMoreProjects}
-            _hover={{ bg: "pink.500", color: "white" }}
-          >
-            Load More Projects ({filteredProjects.length - visibleProjects}{" "}
-            remaining)
-          </Button>
-        </Center>
-      )}
-
-      {/* Completion message */}
-      {visibleProjects >= filteredProjects.length && filteredProjects.length > 0 && (
-        <Center py={8}>
-          <Text color="gray.400" fontSize="sm">
-            You've seen all {filteredProjects.length} projects! 🎉
-          </Text>
-        </Center>
-      )}
     </Stack>
   );
 }
@@ -211,7 +269,7 @@ const Project = ({
     <Box mb={10}>
       <Stack gap={4}>
         <Flex flexWrap={"wrap"} gapX={4} gapY={2} alignItems="center">
-          <Text textStyle={"cardHeading"} color={"pink.100"}>
+          <Text textStyle={"cardHeading"} color={"var(--accent-color)"}>
             {title}
           </Text>
           {label && (

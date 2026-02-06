@@ -1,9 +1,9 @@
-import { Button, Center } from "@chakra-ui/react";
+import { Box, Center } from "@chakra-ui/react";
 import React from "react";
 import { IconType } from "react-icons";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { LuMailbox } from "react-icons/lu";
-import { RiTwitterFill } from "react-icons/ri";
+import { RiTwitterFill, RiYoutubeFill } from "react-icons/ri";
 import { TfiInstagram } from "react-icons/tfi";
 import { CNLink } from "./chakra-next";
 
@@ -14,32 +14,37 @@ export default function Footer() {
     href: string;
     title: string;
   }[] = [
-    {
-      Icon: LuMailbox,
-      href: "mailto:anikeshuzumaki@gmail.com",
-      title: "Email",
-    },
-    {
-      Icon: FiLinkedin,
-      href: "https://www.linkedin.com/in/anikesh-kumar-1b87b42a5",
-      title: "LinkedIn",
-    },
-    {
-      Icon: FiGithub,
-      href: "https://github.com/uzumaki-ak",
-      title: "GitHub",
-    },
-    {
-      Icon: TfiInstagram,
-      href: "https://www.instagram.com/anikeshiro",
-      title: "Instagram",
-    },
-    {
-      Icon: RiTwitterFill,
-      href: "https://x.com/UzumakiAk77285",
-      title: "X (Twitter)",
-    },
-  ];
+      {
+        Icon: LuMailbox,
+        href: "mailto:anikeshuzumaki@gmail.com",
+        title: "Email",
+      },
+      {
+        Icon: FiLinkedin,
+        href: "https://www.linkedin.com/in/anikesh-kumar-1b87b42a5",
+        title: "LinkedIn",
+      },
+      {
+        Icon: FiGithub,
+        href: "https://github.com/uzumaki-ak",
+        title: "GitHub",
+      },
+      {
+        Icon: TfiInstagram,
+        href: "https://www.instagram.com/anikeshiro",
+        title: "Instagram",
+      },
+      {
+        Icon: RiTwitterFill,
+        href: "https://x.com/UzumakiAk77285",
+        title: "X (Twitter)",
+      },
+      {
+        Icon: RiYoutubeFill,
+        href: "https://www.youtube.com/@Ak-uu9qt",
+        title: "YouTube",
+      },
+    ];
 
   return (
     <Center
@@ -51,17 +56,17 @@ export default function Footer() {
       }}
     >
       {items.map((item) => (
-        <Button
-          as="div"
+        <Box
           key={item.title}
-          variant={"surface"}
           p={2}
+          borderRadius="md"
           _hover={{ bg: "#38ED18" }}
+          transition="background-color 0.2s"
         >
           <CNLink href={item.href.trim()}>
             <item.Icon />
           </CNLink>
-        </Button>
+        </Box>
       ))}
     </Center>
   );

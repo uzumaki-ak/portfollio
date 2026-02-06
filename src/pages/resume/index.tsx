@@ -1,9 +1,12 @@
 import { CNLink } from "@/components/chakra-next";
 import Metahead from "@/components/metahead";
 import { navItems } from "@/lib/config/nav-confg";
-import { Flex, Heading, Separator, Stack, Text } from "@chakra-ui/react";
+import { Flex, Heading, Separator, Stack, Text, Button, Box } from "@chakra-ui/react";
+import { IoChevronDown } from "react-icons/io5";
+import { useState } from "react";
 
 export default function ResumePage() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <Metahead
@@ -19,20 +22,72 @@ export default function ResumePage() {
           <Heading as="h1" fontSize="3xl" color={"HighlightText"}>
             My CV ⩸
           </Heading>
-          <CNLink
-            href={navItems.resumePdf}
-            border={"1px solid"}
-            borderColor={"gray.500"}
-            borderRadius={"sm"}
-            target={"_blank"}
-            px={4}
-            py={0}
-            fontSize={"sm"}
-            _hover={{ textDecoration: "none" }}
-            color={"cornsilk"}
-          >
-            Download Resume
-          </CNLink>
+
+          <Box position="relative">
+            <Button
+              variant="outline"
+              border={"1px solid"}
+              borderColor={"gray.500"}
+              borderRadius={"sm"}
+              px={4}
+              py={0}
+              h={8}
+              fontSize={"sm"}
+              fontWeight={"normal"}
+              color={"cornsilk"}
+              _active={{ bg: "whiteAlpha.100" }}
+              _hover={{ bg: "whiteAlpha.100" }}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              Download Resume <IoChevronDown />
+            </Button>
+
+            {isOpen && (
+              <Box
+                position="absolute"
+                top="100%"
+                right={0}
+                mt={2}
+                bg="black"
+                border="1px solid"
+                borderColor="gray.700"
+                borderRadius="sm"
+                zIndex={1500}
+                minW="180px"
+                py={2}
+                boxShadow="lg"
+              >
+                <Stack gap={0}>
+                  <CNLink
+                    href={navItems.appResumePdf}
+                    target="_blank"
+                    px={4}
+                    py={2}
+                    _hover={{ bg: "whiteAlpha.200", textDecoration: "none" }}
+                    display="block"
+                    fontSize="sm"
+                    color="gray.300"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    App Dev Resume
+                  </CNLink>
+                  <CNLink
+                    href={navItems.webResumePdf}
+                    target="_blank"
+                    px={4}
+                    py={2}
+                    _hover={{ bg: "whiteAlpha.200", textDecoration: "none" }}
+                    display="block"
+                    fontSize="sm"
+                    color="gray.300"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Web Dev Resume
+                  </CNLink>
+                </Stack>
+              </Box>
+            )}
+          </Box>
         </Flex>
 
         {/* Experience */}

@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React from 'react'
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 
 export default function Metahead({ title, description, url, keywords }: Props) {
   return (
-    <div>
+    <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords.join(', ')} />
@@ -22,6 +23,6 @@ export default function Metahead({ title, description, url, keywords }: Props) {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:creator" content="@UzumakiAk77285" />
-    </div>
+    </Head>
   )
 }
